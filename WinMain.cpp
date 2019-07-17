@@ -5,24 +5,25 @@
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 	LPSTR lpCmdLine, int nCmdShow)
 {
-	SystemInit systemInit;
-	systemInit.WindowInitMethod();		//ゲーム画面の初期化
+	SystemInit *systemInit = new SystemInit();
+	systemInit->WindowInitMethod();		//ゲーム画面の初期化
 	SceneManager *sceneManager = new SceneManager();
-	LoadImageMethod loadImage;
-	systemInit.SetGameState = 0;
+	LoadImageMethod *loadImage = new LoadImageMethod();
+	loadImage->LoadImages(loadImage);
 
 	//ゲームループ
-	while (ProcessMessage() == 0 && systemInit.GetGameState() != 99 &&
-		!(systemInit.GetKeyFlg() & PAD_INPUT_START)) {
+	while (ProcessMessage() == 0 && systemInit->GetGameState() != 99 &&
+		!(systemInit->GetKeyFlg() & PAD_INPUT_START)) {
 		// 入力キー取得
-		systemInit.SetOldkey(systemInit.GetNowKey());
-		systemInit.SetNowKey(GetJoypadInputState(DX_INPUT_KEY_PAD1));
-		systemInit.SetKeyFlg(systemInit.GetNowKey() & ~systemInit.GetOldKey());
+		systemInit->SetOldkey(systemInit->GetNowKey());
+		systemInit->SetNowKey(GetJoypadInputState(DX_INPUT_KEY_PAD1));
+		systemInit->SetKeyFlg(systemInit->GetNowKey() & ~systemInit->GetOldKey());
 		ClearDrawScreen(); // 画面の初期化
 
-		switch (systemInit.GetGameState()) {
+		switch (systemInit->GetGameState()) {
 		case 0:
 			//タイトル
+
 			break;
 		case 1:
 			//ゲーム初期化
@@ -37,7 +38,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 			//ゲームオーバー
 			break;
 		}
-		DrawFormatString(500, 100, GetColor(255, 255, 255), "GameState : %d", systemInit.GetGameState());
+		DrawFormatString(500, 100, GetColor(255, 255, 255), "GameState : %d", systemInit->GetGameState());
 		ScreenFlip(); // 裏画面の内容を表画面に反映
 	}
 	DxLib_End(); // DX ライブラリ使用の終了処理

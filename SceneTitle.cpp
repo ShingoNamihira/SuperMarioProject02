@@ -1,13 +1,13 @@
 #include "SceneTitleHeader.h"
 
-void SceneTitle::DrawTitle(){
+void SceneTitle::DrawTitle(SystemInit system, LoadImageMethod loadImage){
 	SystemInit systemInit;
 	LoadImageMethod loadImage;
 	static int MenuNo = 0;
 	//メニューカーソル移動処理
-	if (systemInit.GetKeyFlg & PAD_INPUT_DOWN) {
+	/*if (systemInit.GetKeyFlg & PAD_INPUT_DOWN) {
 		if (++MenuNo > 3) MenuNo = 0;
-	}
+	}*/
 	if (systemInit.GetKeyFlg() & PAD_INPUT_UP) {
 		if (--MenuNo < 0) MenuNo = 3;
 	}

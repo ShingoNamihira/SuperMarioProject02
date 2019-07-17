@@ -13,7 +13,7 @@ struct Vector2
 	float y;
 };
 
-static class SystemInit {
+class SystemInit {
 public:
 	int WindowInitMethod();
 	Vector2 *tagVector2 = new Vector2;
@@ -49,8 +49,8 @@ public:
 #pragma endregion
 
 private:
-	static int nOldKey;		// 前回の入力キー
-	static int nNowKey;		// 今回の入力キー
-	static int nKeyFlg;		// 入力キー情報
-	static int nGameState; // ゲームモード
+	int nOldKey;		// 前回の入力キー
+	int nNowKey;		// 今回の入力キー
+	int nKeyFlg;		// 入力キー情報
+	int nGameState = 0; // ゲームモード
 };

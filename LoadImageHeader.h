@@ -1,12 +1,17 @@
 #pragma once
 #include "SystemInitHeader.h"
 
-static class LoadImageMethod {
-public:
-	int LoadImages();
+struct Images
+{
+	int nTitleImage;
+	int nBlockImage;
+	int nMarioImage;
+	int nKuriboImage;
+};
 
-	static int nTitleImage;
-	static int nBlockImage;
-	static int nMarioImage;
-	static int nKuriboImage;
+class LoadImageMethod {
+public:
+	int LoadImages(LoadImageMethod *loadImage);
+
+	Images *tagImages = new Images();
 };

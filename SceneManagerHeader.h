@@ -3,10 +3,10 @@
 #include "GameObjectHeader.h"
 #include "DxLib.h"
 
-static class SceneManager {
+class SceneManager {
 public:
-	static list<GameObject> gameObjectList;
-	void AddGameObject(SceneManager sceneManager, GameObject gameObject);
+	//static list<GameObject> gameObjectList;
+	//void AddGameObject(SceneManager sceneManager, GameObject gameObject);
 
 private:
 

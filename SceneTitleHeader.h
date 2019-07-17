@@ -3,7 +3,7 @@
 
 class SceneTitle : SceneManager {
 public:
-	void DrawTitle();
+	void DrawTitle(LoadImageMethod loadImage);
 
 private:
 

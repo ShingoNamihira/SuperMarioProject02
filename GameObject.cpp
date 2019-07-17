@@ -29,7 +29,7 @@ GameObject GameObject::CreateObject(Position *position, Rotation *rotation,
 	gameObject->tagSize->Weight = size->Weight;
 
 	static LoadImageMethod loadImage;
-	gameObject->nObjectImage = *graph;
+	gameObject->nObjectImage = graph;
 
 	return *gameObject;
 }
