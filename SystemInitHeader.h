@@ -3,12 +3,20 @@
 #include <iostream>
 #include "DxLib.h"
 #include <math.h>
+#include <list>
 
 #define _USE_MATH_DEFINES
 
-class SystemInit {
+struct Vector2
+{
+	float x;
+	float y;
+};
+
+static class SystemInit {
 public:
-	int SystemInitMethod();
+	int WindowInitMethod();
+	Vector2 *tagVector2 = new Vector2;
 
 #pragma region Properties
 	void SetOldkey(int iOldKey) {
@@ -41,8 +49,8 @@ public:
 #pragma endregion
 
 private:
-	int nOldKey;		// 前回の入力キー
-	int nNowKey;		// 今回の入力キー
-	int nKeyFlg;		// 入力キー情報
-	int nGameState = 0; // ゲームモード
+	static int nOldKey;		// 前回の入力キー
+	static int nNowKey;		// 今回の入力キー
+	static int nKeyFlg;		// 入力キー情報
+	static int nGameState; // ゲームモード
 };
