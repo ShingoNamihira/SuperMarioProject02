@@ -4,7 +4,8 @@
 struct Images
 {
 	int nTitleImage;
-	int nBlockImage;
+	int nRengaImage;
+	int nHatenaImage;
 	int nMarioImage;
 	int nKuriboImage;
 };

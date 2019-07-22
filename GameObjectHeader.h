@@ -1,6 +1,6 @@
 #pragma once
-#include "SceneManagerHeader.h"
 #include "LoadImageHeader.h"
+class SceneManager;
 
 using namespace std;
 //オブジェクトの座標
@@ -46,8 +46,8 @@ public:
 	//オブジェクトの当たり判定
 	void ObjectCollider(Scale scale, Size size);
 	//オブジェクト生成
-	GameObject CreateObject(Position *position, Rotation *rotation, 
-		Scale *scale, Size *size, string *name, int *graph);
+	GameObject CreateObject(Position *position, Rotation *rotation,
+		Scale *scale, string *name, int *graph, SceneManager *sceneManager);
 
 #pragma region Properties
 	ObjectSize GetObjectSize() {

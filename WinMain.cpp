@@ -1,6 +1,7 @@
 #include "SystemInitHeader.h"
 #include "SceneManagerHeader.h"
 #include "LoadImageHeader.h"
+#include "PlayerHeader.h"
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 	LPSTR lpCmdLine, int nCmdShow)
@@ -10,6 +11,9 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 	SceneManager *sceneManager = new SceneManager();
 	LoadImageMethod *loadImage = new LoadImageMethod();
 	loadImage->LoadImages(loadImage);
+
+	PlayerClass player;
+	player.SetupPlayer(systemInit, loadImage, sceneManager);
 
 	//ゲームループ
 	while (ProcessMessage() == 0 && systemInit->GetGameState() != 99 &&
@@ -23,19 +27,23 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 		switch (systemInit->GetGameState()) {
 		case 0:
 			//タイトル
-
+			sceneManager->DrawTitle(systemInit, loadImage);
 			break;
 		case 1:
 			//ゲーム初期化
+			sceneManager->GameInit(systemInit, loadImage);
 			break;
 		case 2:
 			//ゲームメイン
+			sceneManager->DrawGameMain(systemInit, loadImage, sceneManager);
 			break;
 		case 3:
 			//ゲームクリア
+			sceneManager->DrawGameClear(systemInit, loadImage);
 			break;
 		case 4:
 			//ゲームオーバー
+			sceneManager->DrawGameOver(systemInit, loadImage);
 			break;
 		}
 		DrawFormatString(500, 100, GetColor(255, 255, 255), "GameState : %d", systemInit->GetGameState());
